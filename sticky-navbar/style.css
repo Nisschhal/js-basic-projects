@@ -1,10 +1,28 @@
 body{
     margin:0;
     /* font-family: sans-serif; */
+    list-style-type: none;
+
+}
+
+.main-section{
+    background: url('https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1178&q=80') center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.main-section h2{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 10px;
+    font-size: 3em;
 }
 
 
-*{
+a{
     list-style-type: none;
-
 }
