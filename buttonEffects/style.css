@@ -11,5 +11,36 @@ body{
 .btn{
     background-color: pink;
     padding: 1rem 2rem;
-    
+    text-decoration: none;
+    color: black;
+    border-radius: .5em;  
+    position: relative; 
+    overflow: hidden;
+    box-shadow: 0 .3em .5em rgba(0, 0, 0, .3);
+
+}
+
+.btn span {
+    position: relative;
+    /* z-index: 1; */
+}
+
+.btn::before{
+    content: '';
+    width: 0;
+    height: 0;
+    background-color: orangered;
+    position: absolute;
+    left: var(--xPos);
+    top: var(--yPos);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: width .8s, height .8s;
+}
+
+.btn:hover::before{
+    width: 300px;
+    height: 300px;
+    /* opacity: .5; */
+
 }
