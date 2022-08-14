@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    font-family: cursive;
+}
+
+
+.container{
+    background-color: aqua;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: 0 .3em .5em rgb(0, 0, 0, .3);
+}
+
+
+.textarea {
+    font-size: 1.1em;
+    font-family: sans-serif;
+    width: 100%;
+    height: 100px;
+    padding: .5em;
+    box-sizing: border-box;
+    border:  solid .15em grey;
+}
+
+
+.counter-container{
+    display: flex;
+    justify-content: space-between;
+    color: gray
+}
+
+.total-counter {
+    color: slateblue;
+}
+.remaining-counter {
+    color: orangered;
+}
