@@ -18,11 +18,66 @@ body{
 
 .main-section h2{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    letter-spacing: 10px;
+    letter-spacing: 2px;
     font-size: 3em;
 }
 
-
-a{
-    list-style-type: none;
+.text{
+    font-family: sans-serif;
+    margin: 3em 5%;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    /* background-color: black; */
+    width: 100%;
+    transition: .8s ease;
+}
+
+/* .window-scroll {
+    background: #401d09;
+    box-shadow: inset 3px 2px 4px wheat;
+    position: fixed;
+    box-shadow: 0 3px 8px black;
+} */
+
+.active {
+    background: #401d09;
+    position: fixed;
+    box-shadow: 0 3px 8px black;
+}
+
+.navbar img {
+    height: 4rem;
+    margin: 1rem 2rem;
+    border-radius: 2rem;
+}
+
+
+
+
+.navbar ul{
+    list-style-type: none;
+    display: flex;
+    margin: auto 2em;
+}
+.navbar li {
+    margin: 1em;
+    font-size: 1.2em;
+}
+
+
+.navbar li a {
+    text-decoration: none;
+    color: white;
+    /* line-height: 4; */
+}
+
+.navbar li a:hover {
+    text-decoration: underline;
+    color: purple
+}
+
+
