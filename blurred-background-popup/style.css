@@ -1,0 +1,119 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: url("https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-size: cover;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+  
+    text-align: center;
+    /* transition: filter .7s; */
+}
+
+
+h1{
+    font-size: 3em;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: .05em;
+    text-shadow: 4px 4px 4px rgba(4, 255, 0, 0.3);
+}
+
+
+.btn{
+    padding: 1em;
+    border: none;
+    border-radius: .2em;
+    cursor: pointer;
+    background-color: orange;
+}
+
+.btn:hover{
+    filter: brightness(.7);
+}
+
+.active.container{
+    filter: blur(5px) brightness(.7);
+    /* visibility: hidden; */
+}
+
+.popup-container{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+    background-color: white;
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    padding: 10px;
+    background: center url("https://images.unsplash.com/photo-1516542076529-1ea3854896f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80");
+    background-size: cover;
+    border-radius: .2em;
+    box-shadow: 2px 2px 4px whitesmoke;
+    justify-content: space-evenly;
+    opacity: 1;
+    transition: all 1s;
+}
+
+
+.active.popup-container{
+    visibility: hidden;
+    opacity: 0;
+    top: 10%;
+
+}
+
+h2{
+    font-size: 2em;
+    color: red;
+    font-family: sans-serif;
+}
+
+label{
+    padding: .2em;
+    font-family: sans-serif;
+    color: rgb(243, 65, 112);
+}
+
+.popup-btn{
+    padding: 1em;
+    border: 2px solid black;
+    font-weight: bold;
+    margin: .1em;
+}
+
+input{
+    font-size: 20px;
+    padding: .4em;
+    border: 1.5px solid black;
+    text-align: center;
+}
+
+
+input::placeholder{
+    color: lightblue;
+}
+
+.close-icon{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    color: orangered
+}
+
