@@ -38,13 +38,14 @@ const getRandomNumber = () => {
   return ran;
 };
 const resetGame = () => {
-  bodyEl.style.backgroundColor = 'black';
+  bodyEl.style.backgroundColor = '#222';
   correctNumber = getRandomNumber();
   numberEl.textContent = '?';
   guessEl.value = '';
   messageEl.textContent = 'Start Guessing !!';
   scoreEl.textContent = 20;
   highScoreEl.textContent = 0;
+  numberEl.style.width = '15rem';
 };
 
 // tasks
@@ -57,21 +58,20 @@ checkButtonEl.addEventListener('click', () => {
   let currentScore = Number(scoreEl.textContent);
   const guessedNumber = guessEl.value;
   if (currentScore == 0) {
-    displayMessage('💥Game Over, You lost it!!!!!');
+    displayMessage('💥 Game Over, You lost it!!!!!');
     return;
   }
 
   if (!guessedNumber) {
     displayMessage('⛔ No Number...');
   } else if (guessedNumber != correctNumber) {
-    if (guessedNumber < correctNumber)
-      displayMessage('🤏 Number guessed to low!!');
-    if (guessedNumber > correctNumber)
-      displayMessage('👆 Number guessed to high!!');
+    guessedNumber < correctNumber
+      ? displayMessage('📉 Number guessed to low!!')
+      : displayMessage('📈  Number guessed to high!!');
 
     scoreEl.textContent = --currentScore;
   } else {
-    displayMessage('🥳 correct guessed!');
+    displayMessage('🎉 correct guessed!');
     highScoreEl.textContent = currentScore;
     updateBackground();
     showCorrectNumber();
