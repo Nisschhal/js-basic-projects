@@ -31,6 +31,7 @@ const diceList = [
   'dice-3.png',
   'dice-4.png',
   'dice-5.png',
+  'dice-6.png',
 ];
 
 // buttons
@@ -38,20 +39,60 @@ const newGameButtonEl = document.querySelector('.btn--new');
 const rollDiceButtonEl = document.querySelector('.btn--roll');
 const holdButtonEl = document.querySelector('.btn--hold');
 
+// img
+const diceImageEl = document.querySelector('.dice');
+
 // variables
-let diceNo;
+let rolledDiceNo;
 let currentScore = 0;
 let playerScore;
+let playerOneTotalScore = 0;
+let playerTwoTotalScore = 0;
 
 // methods
 const getDiceNo = () => {
-  diceNo = Math.trunc(Math.random() * 6 + 1);
-  console.log(`Random dice ${diceNo}`);
-  return diceNo;
+  return Math.trunc(Math.random() * 6 + 1);
+  //   console.log(`Random dice ${diceNo}`);
+  //   return diceNo;
 };
 
 // tasks
 rollDiceButtonEl.addEventListener('click', () => {
-  currentScore += getDiceNo();
+  // get Random no of dice
+  rolledDiceNo = getDiceNo();
+  // update image based on dice no.
+  let diceImage = `./images/${diceList[rolledDiceNo - 1]}`;
+  diceImageEl.src = diceImage;
+
+  console.log('random Dice no: ', rolledDiceNo);
+  // if dice no. == 1
+  if (rolledDiceNo == 1) {
+    currentScore = 0;
+    playerOneTotalScore += currentScore;
+    console.log(playerOneTotalScore);
+    playerOneCurrentScoreEl.textContent = playerOneTotalScore;
+    playerOneScoreEl.textContent = playerOneTotalScore;
+    playerOneCurrentScoreEl.textContent = currentScore;
+    // console.log(playerOneCurrentScoreEl.textContent);
+  } else {
+    // if dice no. != 1
+    // console.log('not rolled 1:', rolledDiceNo);
+    currentScore += rolledDiceNo;
+    playerOneCurrentScoreEl.textContent = currentScore;
+  }
+
   //   console.log(currentScore);
+});
+
+holdButtonEl.addEventListener('click', () => {
+  playerOneTotalScore += currentScore;
+  console.log(playerOneTotalScore);
+  playerOneCurrentScoreEl.textContent = playerOneTotalScore;
+  currentScore = 0;
+  playerOneScoreEl.textContent = playerOneTotalScore;
+  playerOneCurrentScoreEl.textContent = currentScore;
+
+  if (playerOneScoreEl.textContent == '100') {
+    document.querySelector('body').style.backgroundColor = 'green';
+  }
 });
