@@ -240,8 +240,8 @@ whether it's in the first half or second half (after 45 min) of the game, like t
 // console.log(airline.slice(airline.lastIndexOf('P')));
 
 /////////////////////// CODING CHALLENGE 4 /////////////////////////
-const textAreaEl = document.querySelector('textarea');
-const buttonEl = document.querySelector('button');
+// const textAreaEl = document.querySelector('textarea');
+// const buttonEl = document.querySelector('button');
 // console.log(buttonEl);
 
 /// nischal_puri => nischalPuri
@@ -252,40 +252,94 @@ const buttonEl = document.querySelector('button');
 // capitalize the 2nd item from inner split
 
 // formating innterArray Item
-const camelCase = function (str) {
-  const trimItem = str.trim();
-  let [firstName, lastName] = trimItem.split('_');
+// const camelCase = function (str) {
+//   const trimItem = str.trim();
+//   let [firstName, lastName] = trimItem.split('_');
 
-  lastName = lastName[0].toUpperCase() + lastName.slice(1);
+//   lastName = lastName[0].toUpperCase() + lastName.slice(1);
 
-  const formattedWord = [firstName, lastName].join('');
-  // console.log(formattedWord);
-  return formattedWord;
+//   const formattedWord = [firstName, lastName].join('');
+//   // console.log(formattedWord);
+//   return formattedWord;
+// };
+
+// const formattedArray = [];
+// const capitalizedArray = array => {
+//   const splitedArray = array.split('\n');
+//   // console.log(splitedArray);
+//   for (const item of splitedArray) {
+//     formattedArray.push(camelCase(item));
+//   }
+
+//   for (const [index, item] of formattedArray.entries()) {
+//     console.log(item, '✅'.repeat(index + 1));
+//   }
+// };
+
+// console.log(formattedArray);
+// buttonEl.addEventListener('click', () => {
+//   const textAreaValue = textAreaEl.value;
+
+//   if (textAreaValue.length < 2) {
+//     alert('cannot change text!!');
+//     return;
+//   }
+
+//   // const textArray = textAreaValue.split('\n'); // gives an array of words
+//   // console.log(textArray);
+//   capitalizedArray(textAreaValue);
+// });
+
+///// optimized version of capitalization of textare str
+
+// const textAreaEl = document.querySelector('textarea');
+// const buttonEl = document.querySelector('button');
+
+// buttonEl.addEventListener('click', () => {
+//   const textAreaValue = textAreaEl.value;
+
+//   const rows = textAreaValue.split('\n');
+//   const formattedRows = [];
+
+//   for (const [index, row] of rows.entries()) {
+//     let [firstName, lastName] = row.toLowerCase().trim().split('_');
+
+//     // let [firstName, lastName] = trimItem.split('_');
+//     const output = `${firstName}${lastName}`.replace(
+//       lastName[0],
+//       lastName[0].toUpperCase()
+//     );
+//     console.log(output.padEnd(20), '✅'.repeat(index + 1));
+
+//     // const formattedWord = [firstName, formatedLastName].join('');
+
+//     // formattedRows.push(formattedWord);
+//   }
+//   // console.log(formattedRows);
+// });
+
+/////////////// HIGHER -ORDER FUNCTION /////////////////////////
+const firstOrderTransformer = function (str, fun) {
+  console.log(`orignial Text: ${str}`);
+  console.log(`Transformed Text: ${fun(str)}`);
+  console.log(`Transformed funtion Name: ${fun.name}`); // built-in properties to get the function name.
 };
 
-const formattedArray = [];
-const capitalizedArray = array => {
-  const splitedArray = array.split('\n');
-  // console.log(splitedArray);
-  for (const item of splitedArray) {
-    formattedArray.push(camelCase(item));
-  }
-
-  for (const [index, item] of formattedArray.entries()) {
-    console.log(item, '✅'.repeat(index + 1));
-  }
+const toUpperFirstLetter = function (str) {
+  const [firstWord, ...others] = str.split(' ');
+  return [firstWord[0].toUpperCase() + firstWord.slice(1), ...others].join(' ');
 };
 
-console.log(formattedArray);
-buttonEl.addEventListener('click', () => {
-  const textAreaValue = textAreaEl.value;
+firstOrderTransformer('this is firstOrderFunction.', toUpperFirstLetter);
 
-  if (textAreaValue.length < 2) {
-    alert('cannot change text!!');
-    return;
-  }
+// a function returing another function as a value.
 
-  // const textArray = textAreaValue.split('\n'); // gives an array of words
-  // console.log(textArray);
-  capitalizedArray(textAreaValue);
-});
+const greeter = greet => {
+  return person => {
+    console.log(`${greet} ${person}!!`);
+  };
+};
+
+const greeting = greeter('Hello,');
+greeting('Nischal Puri');
+greeting('Nischant Puri');
