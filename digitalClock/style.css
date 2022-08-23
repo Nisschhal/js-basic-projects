@@ -1,67 +1,65 @@
 body {
-    margin: 0;
-    display: flex;
-    font-family: sans-serif;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: center no-repeat url('https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); 
-    /* setting bg to center with no-repeat */
-    background-size: cover; /*covering the bg with given img */
-    
+  margin: 0;
+  display: flex;
+  font-family: sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: center no-repeat
+    url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80');
+  /* setting bg to center with no-repeat */
+  background-size: cover; /*covering the bg with given img */
 }
 
-h2{
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-align: center;
+h2 {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align: center;
 }
 .clock {
-    display: flex;
-
-
+  display: flex;
 }
 
 .clock div {
-    margin: 5px;
-    /* box-shadow: 2px 2px 4px black; */
-    position: relative;
+  margin: 5px;
+  /* box-shadow: 2px 2px 4px black; */
+  position: relative;
 }
 
 .clock span {
-    background-color: rgb(54 80 89);
-    /* opacity: .6; */
-    width: 120px;
-    height: 80px;
-    /* margin: 3px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    text-shadow: 2px 2px 4px black ;
-    color: whitesmoke;
+  background-color: rgb(54 80 89);
+  /* opacity: .6; */
+  width: 120px;
+  height: 80px;
+  /* margin: 3px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px black;
+  color: whitesmoke;
 }
 
 .clock .text {
-    height: 30px;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-color:rgb(12, 63, 73) ;
-    opacity: .8;
+  height: 30px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: rgb(12, 63, 73);
+  opacity: 0.8;
 }
 
 .clock #ampm {
-    position: absolute;
-    bottom: 0;
-    font-size: 20px;
-    width: 3em;
-    box-sizing: border-box;
-    padding: 5px;
-    height: 30px;
-        background-color: rgb(14, 55, 68);
-        text-transform: uppercase;
-    /* border-radius: 7px; */
+  position: absolute;
+  bottom: 0;
+  font-size: 20px;
+  width: 3em;
+  box-sizing: border-box;
+  padding: 5px;
+  height: 30px;
+  background-color: rgb(14, 55, 68);
+  text-transform: uppercase;
+  /* border-radius: 7px; */
 }
