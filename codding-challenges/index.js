@@ -319,27 +319,75 @@ whether it's in the first half or second half (after 45 min) of the game, like t
 // });
 
 /////////////// HIGHER -ORDER FUNCTION /////////////////////////
-const firstOrderTransformer = function (str, fun) {
-  console.log(`orignial Text: ${str}`);
-  console.log(`Transformed Text: ${fun(str)}`);
-  console.log(`Transformed funtion Name: ${fun.name}`); // built-in properties to get the function name.
-};
+// const firstOrderTransformer = function (str, fun) {
+//   console.log(`orignial Text: ${str}`);
+//   console.log(`Transformed Text: ${fun(str)}`);
+//   console.log(`Transformed funtion Name: ${fun.name}`); // built-in properties to get the function name.
+// };
 
-const toUpperFirstLetter = function (str) {
-  const [firstWord, ...others] = str.split(' ');
-  return [firstWord[0].toUpperCase() + firstWord.slice(1), ...others].join(' ');
-};
+// const toUpperFirstLetter = function (str) {
+//   const [firstWord, ...others] = str.split(' ');
+//   return [firstWord[0].toUpperCase() + firstWord.slice(1), ...others].join(' ');
+// };
 
-firstOrderTransformer('this is firstOrderFunction.', toUpperFirstLetter);
+// firstOrderTransformer('this is firstOrderFunction.', toUpperFirstLetter);
 
 // a function returing another function as a value.
 
-const greeter = greet => {
-  return person => {
-    console.log(`${greet} ${person}!!`);
-  };
-};
+// const greeter = greet => {
+//   return person => {
+//     console.log(`${greet} ${person}!!`);
+//   };
+// };
 
-const greeting = greeter('Hello,');
-greeting('Nischal Puri');
-greeting('Nischant Puri');
+// const greeting = greeter('Hello,');
+// greeting('Nischal Puri');
+// greeting('Nischant Puri');
+// greeter('Hey,')('Dipendra');
+
+/// using More lesser code
+// greetMe with greet argument arrow function returning another arrow function using name.
+// const greetMe = greet => name => console.log(`${greet},${name}!!`);greetMe('Hi ')('Nisal');
+
+/////////////////// CALL AND APPLY METHODS FOR using this in regular function///////////////////
+// const nepalAirline = {
+//   airline: 'NepalAriline',
+//   iataCode: 'NA',
+//   bookings: [],
+
+//   book(flightNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+//   },
+// };
+
+// nepalAirline.book(410, 'Nischal Puri');
+
+// const newNepalAirline = {
+//   airline: 'NewNepalAirline',
+//   iataCode: 'NNA',
+//   bookings: [],
+// };
+
+// const book = nepalAirline.book;
+// book(240, 'Nishant Puri');  // doesn't work while adding /copying other object method to newObject's method
+
+// book.call(newNepalAirline, 220, 'Suraj Thapa');
+// console.log(newNepalAirline);
+// book.call(nepalAirline, 444, 'Badal Thapa');
+
+// Apply methods
+
+// apply methods is like a call() methods which takes the list of argument with newObject refrence but the 2nd/rest argument takes on array rather than seperate arguments
+
+// book.apply(newNepalAirline, [111, 'Nickey Boi']);
+// console.log(newNepalAirline);
+
+// copyingMethod.apply(newObject, [arg1, arg2]);
+// const bookNNA = book.bind(newNepalAirline, 100);
+
+// bookNNA('nisal puri');
+// bookNNA('mr. puri');
+// console.log(newNepalAirline);
