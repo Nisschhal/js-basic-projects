@@ -391,3 +391,139 @@ whether it's in the first half or second half (after 45 min) of the game, like t
 // bookNNA('nisal puri');
 // bookNNA('mr. puri');
 // console.log(newNepalAirline);
+
+/////////////// PARTIAL APPLICATION USE /////////////////////
+
+// const addTax = (rate, value) => value + value * rate;
+
+// const addVAT = addTax.bind(null, 0.13); // binding the old function with new function but setting the default value rate as .13 %;
+// .bind() need object to refer its home but here we are using with function only thus adding null
+// partical application helps to create new specific function based on the general function; here specific is addVAT using general/regular function addTax();
+
+// now rather than calling and assigning value for rate and value we can simply call with value only;
+
+// console.log(addVAT(100));
+
+// const addTax = rate => value => value + value * rate;
+
+// console.log(addTax(0.13)(100));
+
+// const addTax = function (rate) {
+//   return function (value) {
+//     return value + value * rate;
+//   };
+// };
+
+// console.log(addVAT(0.13)(100));
+// const addVAT = addTax(0.13);
+// console.log(addVAT(100));
+
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section!
+//   answers: new Array(4).fill(0),
+//   regisgerNewAnswer() {
+//     const pollNumber = Number(
+//       prompt(
+//         `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+//       )
+//     );
+//     // debugger;
+//     if (pollNumber > 3 || pollNumber < 0) return alert('Wrong Input!!');
+//     switch (pollNumber) {
+//       case 0: {
+//         this.answers[pollNumber]++;
+//         console.log('case 0 executed!!');
+//         console.log(this.answers);
+//         break;
+//       }
+//       case 1: {
+//         this.answers[pollNumber]++;
+//         break;
+//       }
+//       case 2: {
+//         this.answers[pollNumber]++;
+//         break;
+//       }
+//       case 3: {
+//         this.answers[pollNumber]++;
+//         break;
+//       }
+//     }
+//     displayMessage(this.answers);
+//   },
+// };
+
+// const displayMessage = result => {
+//   const displayOpt = prompt('1:string\n2:array\nChoose your display Type:');
+//   displayOpt == 'string' || 1
+//     ? console.log(`Poll results are ${result.toString()}`)
+//     : console.log(result);
+// };
+
+////////////// CLOSURE ///////////
+
+// let someFun;
+
+// const outerFun = function () {
+//   const independentVariable = 23;
+//   someFun = function () {
+//     console.log(
+//       `this inner/assign function get access to independent variable and can use as required, here muliplication: a(23) * 2: ${
+//         independentVariable * 2
+//       }`
+//     );
+//   };
+// };
+
+// outerFun(); // once executed and closed the environment variable
+// someFun(); // get access to upperfunction even though not on the execution stack
+
+// const boardPassengers = function (n, wait) {
+//   const perGroup = n / 3;
+
+//   setTimeout(() => {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups, each with ${perGroup} passengers`);
+//   }, wait * 1000);
+//   console.log(`Will start boardin in ${wait} seconds`);
+// };
+
+// boardPassengers(180, 3);
+
+// //////// Array methods
+
+const fruits = ['apple', 'banana', 'litche', 'mango', 'popaya'];
+
+console.log(fruits.at(-1));
+
+// add to front and remove from last
+console.log(fruits.unshift('grapes')); // returns total item after adding to front
+console.log(fruits.pop()); // returns the poped item
+console.log(fruits);
+
+// add to last and remove from front
+console.log(fruits.push('pomegrane')); // add to last
+console.log(fruits.shift()); // returns the first poped item
+console.log(fruits);
+
+// extract/ shallow copy array
+console.log(fruits.slice(1)); // extract the copy of an array starting from index 1
+console.log(fruits.slice(1, 3)); // extract the copy of an array starting from index 1st to index 3-1 = 2nd
+
+// array to string
+console.log(typeof fruits.join('||'));
+
+// concatenate array
+const veggi = ['potato', 'tomato', 'cabbage'];
+console.log(fruits.concat(veggi)); // retuns the new array with fruits and veggi on it.
+console.log([...fruits, ...veggi]); // same as .concat but using spread operator
+console.log(fruits);
+
+// reverse the array permanently
+console.log(fruits.reverse()); // returns the reverse the given array
+
+// modify/ cut the array permanently
+console.log(fruits.splice(1, 3)); // retuns the removed items // remove 3 items starting from index 1
+console.log(fruits);
