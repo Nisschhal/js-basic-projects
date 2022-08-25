@@ -278,3 +278,17 @@ btnClose.addEventListener('click', e => {
     alert('Current UserName or Pin is Invalid!!');
   }
 });
+
+const totalMovmentTransaction = accounts
+  .flatMap(account => account.movements)
+  .reduce((acc, mov) => {
+    return acc + mov;
+  }, 0);
+// const totalMovmentTransaction = accounts
+//   .map(account => account.movements)
+//   .flat()
+//   .reduce((acc, mov) => {
+//     return acc + mov;
+//   }, 0);
+
+console.log(totalMovmentTransaction);
