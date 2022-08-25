@@ -74,14 +74,14 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-
-function displayMovements(account) {
-  // const type =
+let sorted = false;
+function displayMovements(movements, sorted = false) {
+  const movs = sorted ? movements.slice().sort((a, b) => a - b) : movements;
 
   containerMovements.innerHTML = ''; // removing all the innerHTML before adding new ones.
 
   // looping through the passed movement transactions and adding new HTML element.
-  account.movements.forEach((mov, i) => {
+  movs.forEach((mov, i) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `<div class="movements__row">
     <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
@@ -94,6 +94,16 @@ function displayMovements(account) {
   });
 }
 
+// when the sort button is clicked then sort the movements of currentUser
+btnSort.addEventListener('click', () => {
+  // when the item is clicked change the sorted to unsorted and vice verse
+  sorted = !sorted;
+  displayMovements(currentUser.movements, sorted);
+  // catch the sort text element to show text based on the sorted item
+  const sortText = document.querySelector('.sort');
+  // if the movement already sorted then show a text to unsort else show a text to sort
+  sorted ? (sortText.textContent = 'UNSORT') : (sortText.textContent = 'SORT');
+});
 // displayMovements(account1.movements);
 
 // split the name based on the whitespace
@@ -174,7 +184,7 @@ const updateUI = account => {
   // update balance
   calcDisplayBalance(account);
   // update Movements
-  displayMovements(account);
+  displayMovements(account.movements);
 
   // update summary
   calcDisplaySummary(account);
