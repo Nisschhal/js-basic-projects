@@ -237,6 +237,27 @@ btnTransfer.addEventListener('click', e => {
   }
 });
 
+btnLoan.addEventListener('click', e => {
+  e.preventDefault();
+
+  // gettin the requested loan amount
+  const amount = Number(inputLoanAmount.value);
+  console.log(amount);
+  // check if the amount is valid
+  // check if the requested amount is more that of 20% of any deposite amount
+  if (amount > 0 && currentUser.movements.some(mov => mov >= amount * 0.2)) {
+    console.log('pased');
+    // debugger;
+    currentUser.movements.push(amount);
+    inputLoanAmount.value = '';
+    updateUI(currentUser);
+  } else {
+    alert(
+      `Sorry, You don't have any transactions of atleast 20% of your requested loan amount!!`
+    );
+  }
+});
+
 btnClose.addEventListener('click', e => {
   e.preventDefault();
 
