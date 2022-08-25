@@ -494,36 +494,199 @@ whether it's in the first half or second half (after 45 min) of the game, like t
 
 // //////// Array methods
 
-const fruits = ['apple', 'banana', 'litche', 'mango', 'popaya'];
+// const fruits = ['apple', 'banana', 'litche', 'mango', 'popaya'];
 
-console.log(fruits.at(-1));
+// console.log(fruits.at(-1));
 
 // add to front and remove from last
-console.log(fruits.unshift('grapes')); // returns total item after adding to front
-console.log(fruits.pop()); // returns the poped item
-console.log(fruits);
+// console.log(fruits.unshift('grapes')); // returns total item after adding to front
+// console.log(fruits.pop()); // returns the poped item
+// console.log(fruits);
 
 // add to last and remove from front
-console.log(fruits.push('pomegrane')); // add to last
-console.log(fruits.shift()); // returns the first poped item
-console.log(fruits);
+// console.log(fruits.push('pomegrane')); // add to last
+// console.log(fruits.shift()); // returns the first poped item
+// console.log(fruits);
 
 // extract/ shallow copy array
-console.log(fruits.slice(1)); // extract the copy of an array starting from index 1
-console.log(fruits.slice(1, 3)); // extract the copy of an array starting from index 1st to index 3-1 = 2nd
+// console.log(fruits.slice(1)); // extract the copy of an array starting from index 1
+// console.log(fruits.slice(1, 3)); // extract the copy of an array starting from index 1st to index 3-1 = 2nd
 
 // array to string
-console.log(typeof fruits.join('||'));
+// console.log(typeof fruits.join('||'));
 
 // concatenate array
-const veggi = ['potato', 'tomato', 'cabbage'];
-console.log(fruits.concat(veggi)); // retuns the new array with fruits and veggi on it.
-console.log([...fruits, ...veggi]); // same as .concat but using spread operator
-console.log(fruits);
+// const veggi = ['potato', 'tomato', 'cabbage'];
+// console.log(fruits.concat(veggi)); // retuns the new array with fruits and veggi on it.
+// console.log([...fruits, ...veggi]); // same as .concat but using spread operator
+// console.log(fruits);
 
 // reverse the array permanently
-console.log(fruits.reverse()); // returns the reverse the given array
+// console.log(fruits.reverse()); // returns the reverse the given array
 
 // modify/ cut the array permanently
-console.log(fruits.splice(1, 3)); // retuns the removed items // remove 3 items starting from index 1
-console.log(fruits);
+// console.log(fruits.splice(1, 3)); // retuns the removed items // remove 3 items starting from index 1
+// console.log(fruits);
+
+/////////////////////// Array Challenge:
+
+/* 
+Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners 
+about their dog's age, and stored the data into an array (one array for each). For 
+now, they are just interested in knowing whether a dog is an adult or a puppy.
+A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years 
+old.
+Your tasks:
+Create a function 'checkDogs', which accepts 2 arrays of dog's ages 
+('dogsJulia' and 'dogsKate'), and does the following things:
+1. Julia found out that the owners of the first and the last two dogs actually have 
+cats, not dogs! So create a shallow copy of Julia's array, and remove the cat 
+ages from that copied array (because it's a bad practice to mutate function 
+parameters)
+2. Create an array with both Julia's (corrected) and Kate's data
+3. For each remaining dog, log to the console whether it's an adult ("Dog number 1 
+is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 
+�
+")
+4. Run the function for both test datasets
+Test data:
+Hints: Use tools from all lectures in this section so far �
+GOOD LUCK �
+*/
+// const Julia = [3, 5, 2, 12, 7];
+// const Kate = [4, 1, 15, 8, 3];
+// const Julia1 = [9, 16, 6, 8, 3];
+// const Kate1 = [10, 5, 6, 1, 4];
+
+// const checkDogs = (juliaDogs, kateDogs) => {
+//   const onlyjuliaDogs = [...juliaDogs];
+//   onlyjuliaDogs.splice(0, 1); // first dog discarded
+//   onlyjuliaDogs.splice(-2); // last two dogs discarded
+
+//   const dogs = [...onlyjuliaDogs, ...kateDogs];
+//   onlyjuliaDogs.forEach((dog, index) =>
+//     console.log(
+//       `Julia Dog ${index + 1} ${dog > 3 ? 'Adult' : 'Poppy'} with age ${dog}`
+//     )
+//   );
+//   dogs.forEach((dog, index) =>
+//     console.log(
+//       `Dog ${index + 1} ${dog > 3 ? 'Adult' : 'Poppy'} with age ${dog}`
+//     )
+//   );
+// };
+
+// checkDogs(Julia, Kate);
+
+// const createUserName = name => {
+//   const userName = name
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('');
+//   return userName;
+// };
+
+// console.log(createUserName('nischal puri thapa'));
+
+// const account1 = {
+//   owner: 'Jonas Schmedtmann',
+//   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+//   interestRate: 1.2, // %
+//   pin: 1111,
+// };
+
+// const account2 = {
+//   owner: 'Jessica Davis',
+//   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+//   interestRate: 1.5,
+//   pin: 2222,
+// };
+
+// const account3 = {
+//   owner: 'Steven Thomas Williams',
+//   movements: [200, -200, 340, -300, -20, 50, 400, -460],
+//   interestRate: 0.7,
+//   pin: 3333,
+// };
+
+// const account4 = {
+//   owner: 'Sarah Smith',
+//   movements: [430, 1000, 700, 50, 90],
+//   interestRate: 1,
+//   pin: 4444,
+// };
+
+// const accounts = [account1, account2, account3, account4];
+
+// function createUserName(name) {
+//   const userName = name
+//     .toLowerCase()
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('');
+//   return userName;
+// }
+
+// // passing the
+// const addUserName = accs => {
+//   accs.forEach(acc => {
+//     acc.userName = createUserName(acc.owner);
+//   });
+// };
+
+// addUserName(accounts);
+
+// console.log(accounts);
+
+//////////////////// MAP, FILTER, AND REDUCE ///////////////////////
+// const Data1 = [5, 2, 4, 1, 15, 8, 3];
+// const Data2 = [16, 6, 10, 5, 6, 1, 4];
+// const data = [...Data1, ...Data2];
+// const humanAges = data.map(datum => {
+//   if (datum <= 2) return 2 * datum;
+//   return 16 + datum + 4;
+// });
+
+// const adultDog = data.filter(dog => dog >= 18);
+
+// const sum = data.reduce((acc, dogAge) => {
+//   return acc + dogAge;
+// }, 0);
+// const average = sum / data.length;
+
+// console.log(humanAges);
+// console.log(adultDog);
+// console.log(average);
+
+// const calculateHumanAverageAge = (data1, data2) => {
+//   const data = [...data1, ...data2];
+//   console.log(data);
+//   const humanAges = data.map(datum => {
+//     if (datum <= 2) return 2 * datum;
+//     return 16 + datum * 4;
+//   });
+//   console.log(humanAges);
+//   const adultHumans = humanAges.filter(age => age >= 18);
+//   console.log(adultHumans);
+
+//   const average =
+//     adultHumans.reduce((acc, age) => {
+//       return acc + age;
+//     }, 0) / adultHumans.length;
+//   console.log(average);
+//   return average;
+// };
+
+// console.log(calculateHumanAverageAge(Data1, []));
+
+const calculateHumanAverageAge = (data1, data2) => {
+  const ages = [...data1, ...data2];
+  const average = ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter((age, i, arr) => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+  return average;
+};
+
+console.log(calculateHumanAverageAge([5, 2, 4, 1, 15, 8, 3], []));

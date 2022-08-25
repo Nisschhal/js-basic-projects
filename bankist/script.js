@@ -78,18 +78,125 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 function displayMovements(movements) {
   // const type =
 
-  containerMovements.innerHTML = '';
+  containerMovements.innerHTML = ''; // removing all the innerHTML before adding new ones.
 
+  // looping through the passed movement transactions and adding new HTML element.
   movements.forEach((mov, i) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `<div class="movements__row">
     <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
     <div class="movements__date">3 days ago</div>
-    <div class="movements__value">${mov}$</div>
+    <div class="movements__value">${mov}€</div>
   </div>`;
 
+    // inserting the new HTML into the specified position
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
 
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
+
+// split the name based on the whitespace
+// create a new array with only first letter from splited name
+// join the array of first letter create using map
+
+function createUserName(name) {
+  const userName = name
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  return userName;
+}
+
+/*
+passing the list of accounts
+looping through each account and adding username properties in each account
+
+
+
+*/
+const addUserName = accs => {
+  accs.forEach(acc => {
+    acc.userName = createUserName(acc.owner);
+  });
+};
+
+addUserName(accounts);
+// console.log(accounts);
+// console.log(createUserName('nischal puri thapa'));
+
+// const deposits = movements.filter(mov => mov > 0);
+// const withdrawal = movements.filter(mov => mov < 0);
+
+// console.log(deposits);
+// console.log(withdrawal);
+
+// const maxMov = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   return mov;
+// });
+
+// console.log(maxMov);
+
+const calcDisplaySummary = account => {
+  const incomes = account.movements
+    .filter(mov => mov >= 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = incomes + '€';
+
+  const outgoings = account.movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = Math.abs(outgoings) + '€';
+
+  const interest = account.movements
+    .filter(mov => mov >= 0)
+    .map(deposite => (deposite * account.interestRate) / 100)
+    .filter(int => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = interest + '€';
+};
+
+// calcDisplaySummary(movements);
+
+const calcDisplayBalance = movements => {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = balance + '€';
+};
+
+let currentUser;
+
+// console.log(currentUser);
+
+// when user input userName and pin and click the login button
+btnLogin.addEventListener('click', event => {
+  event.preventDefault(); // since login userName and pin field is form to prevent submit and reload page preventing from default event action.
+
+  //getting currentUser based on the login userName
+  currentUser = accounts.find(
+    account => account.userName === inputLoginUsername.value
+  );
+
+  if (currentUser?.pin === Number(inputLoginPin.value)) {
+    // update UI and message
+    // setting the welcome message as user logged in
+    labelWelcome.textContent = `Welcome, ${currentUser.owner.split(' ')[0]}`;
+
+    inputLoginPin.value = inputLoginUsername.value = ''; // remove the input value after login
+    inputLoginUsername.blur(); // remove the focus if there are any
+
+    containerApp.style.opacity = 1;
+
+    // update balance
+    calcDisplayBalance(currentUser.movements);
+    // update Movements
+    displayMovements(currentUser.movements);
+
+    // update summary
+    calcDisplaySummary(currentUser);
+    console.log(accounts);
+  } else {
+    alert('Invalid userName or Password');
+  }
+});
