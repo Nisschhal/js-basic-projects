@@ -588,35 +588,35 @@ GOOD LUCK �
 
 // console.log(createUserName('nischal puri thapa'));
 
-// const account1 = {
-//   owner: 'Jonas Schmedtmann',
-//   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-//   interestRate: 1.2, // %
-//   pin: 1111,
-// };
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
 
-// const account2 = {
-//   owner: 'Jessica Davis',
-//   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
-//   interestRate: 1.5,
-//   pin: 2222,
-// };
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
 
-// const account3 = {
-//   owner: 'Steven Thomas Williams',
-//   movements: [200, -200, 340, -300, -20, 50, 400, -460],
-//   interestRate: 0.7,
-//   pin: 3333,
-// };
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
 
-// const account4 = {
-//   owner: 'Sarah Smith',
-//   movements: [430, 1000, 700, 50, 90],
-//   interestRate: 1,
-//   pin: 4444,
-// };
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
 
-// const accounts = [account1, account2, account3, account4];
+const accounts = [account1, account2, account3, account4];
 
 // function createUserName(name) {
 //   const userName = name
@@ -691,6 +691,61 @@ GOOD LUCK �
 
 // console.log(calculateHumanAverageAge([5, 2, 4, 1, 15, 8, 3], []));
 
-const someArray = ['nish', 'puri', 'nischal', 'pu'];
-console.log(someArray.indexOf('puri'));
-console.log(someArray.findIndex('puri'));
+// const someArray = ['nish', 'puri', 'nischal', 'pu'];
+// console.log(someArray.indexOf('puri'));
+// console.log(someArray.findIndex('puri'));
+
+// const random100Dice = Array.from({ length: 100 }, cur => {
+//   console.log(cur);
+//   return Math.trunc(Math.random() * 100 + 1);
+// });
+
+// console.log(random100Dice);
+
+/* FLATMAP AND REDUCT */
+
+// getting all the positive transactions value and summing up to variable, bankDepositeSum
+const bankDepositeSum = accounts
+  .flatMap(account => account.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, mov) => sum + mov, 0);
+console.log(bankDepositeSum);
+
+// getting all the positive transaction which is greater and equal to 1000;
+
+// const bankDeposite1000 = accounts
+//   .flatMap(account => account.movements)
+//   .filter(mov => mov >= 1000)
+//   .reduce((count, mov) => ++count, 0);
+
+// without using filter to count the item array
+const bankDeposite1000 = accounts
+  .flatMap(account => account.movements)
+  .reduce((count, mov) => (mov >= 1000 ? ++count : count), 0);
+console.log(bankDeposite1000);
+
+const transactions = accounts
+  .flatMap(account => account.movements)
+  .reduce(
+    (transaction, curr) => {
+      transaction[curr > 0 ? 'deposite' : 'withdrawals'] += curr;
+      return transaction;
+    },
+    { deposite: 0, withdrawals: 0 }
+  );
+
+console.log(transactions);
+
+// convert to title case
+
+const talking = 'this is a nice talking the talking.';
+const exceptions = ['a', 'an', 'the'];
+const titleTalking = talking.split(' ').reduce((sum, curr) => {
+  sum +=
+    (exceptions.includes(curr) ? curr : curr[0].toUpperCase() + curr.slice(1)) +
+    ' ';
+  // sum ? (sum += sum[0].toUpperCase() + sum.slice(1)) : sum;
+  return sum;
+}, '');
+
+console.log(titleTalking);
