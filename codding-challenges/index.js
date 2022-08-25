@@ -679,14 +679,18 @@ GOOD LUCK �
 
 // console.log(calculateHumanAverageAge(Data1, []));
 
-const calculateHumanAverageAge = (data1, data2) => {
-  const ages = [...data1, ...data2];
-  const average = ages
-    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
-    .filter((age, i, arr) => age >= 18)
-    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+// const calculateHumanAverageAge = (data1, data2) => {
+//   const ages = [...data1, ...data2];
+//   const average = ages
+//     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+//     .filter((age, i, arr) => age >= 18)
+//     .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
 
-  return average;
-};
+//   return average;
+// };
 
-console.log(calculateHumanAverageAge([5, 2, 4, 1, 15, 8, 3], []));
+// console.log(calculateHumanAverageAge([5, 2, 4, 1, 15, 8, 3], []));
+
+const someArray = ['nish', 'puri', 'nischal', 'pu'];
+console.log(someArray.indexOf('puri'));
+console.log(someArray.findIndex('puri'));

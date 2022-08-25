@@ -75,13 +75,13 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-function displayMovements(movements) {
+function displayMovements(account) {
   // const type =
 
   containerMovements.innerHTML = ''; // removing all the innerHTML before adding new ones.
 
   // looping through the passed movement transactions and adding new HTML element.
-  movements.forEach((mov, i) => {
+  account.movements.forEach((mov, i) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `<div class="movements__row">
     <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
@@ -160,14 +160,25 @@ const calcDisplaySummary = account => {
 
 // calcDisplaySummary(movements);
 
-const calcDisplayBalance = movements => {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = balance + '€';
+const calcDisplayBalance = account => {
+  // after calculating the main balance of a given account add new balance properties or update it with the total sum of movements.
+  account.balance = account.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = account.balance + '€';
 };
 
 let currentUser;
 
 // console.log(currentUser);
+
+const updateUI = account => {
+  // update balance
+  calcDisplayBalance(account);
+  // update Movements
+  displayMovements(account);
+
+  // update summary
+  calcDisplaySummary(account);
+};
 
 // when user input userName and pin and click the login button
 btnLogin.addEventListener('click', event => {
@@ -188,15 +199,61 @@ btnLogin.addEventListener('click', event => {
 
     containerApp.style.opacity = 1;
 
-    // update balance
-    calcDisplayBalance(currentUser.movements);
-    // update Movements
-    displayMovements(currentUser.movements);
-
-    // update summary
-    calcDisplaySummary(currentUser);
+    updateUI(currentUser);
     console.log(accounts);
   } else {
     alert('Invalid userName or Password');
+  }
+});
+
+/// tansfer money to other valid Account
+
+btnTransfer.addEventListener('click', e => {
+  e.preventDefault();
+
+  const transferAmount = Number(inputTransferAmount.value);
+  const recieverAcc = accounts.find(
+    acc => acc.userName === inputTransferTo.value
+  );
+
+  // once the transfer button is click erase the input field values
+  inputTransferTo.value = inputTransferAmount.value = '';
+
+  // console.log(recieverAcc);
+
+  // update sender and reciever accounts' movements
+  // check if the amount is non negative value
+  // check if receiveraccount and not the same as currentAcc
+  // check if the currentUser balance is enough to make a transactions
+  if (
+    transferAmount > 0 &&
+    recieverAcc &&
+    currentUser.balance >= transferAmount &&
+    recieverAcc?.userName !== currentUser.userName
+  ) {
+    currentUser.movements.push(-transferAmount);
+    recieverAcc.movements.push(transferAmount);
+    updateUI(currentUser);
+  }
+});
+
+btnClose.addEventListener('click', e => {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentUser.userName &&
+    Number(inputClosePin.value) === currentUser.pin
+  ) {
+    // get the index no. of current acount.
+    const accIndex = accounts.findIndex((account, index, array) => {
+      console.log(array);
+      return account.userName == inputCloseUsername.value;
+    });
+
+    accounts.splice(accIndex, 1); // remove the current account data from the accounts array
+    inputCloseUsername.value = inputClosePin.value = '';
+    containerApp.style.opacity = 0;
+  } else {
+    alert('Current UserName or Pin is Invalid!!');
   }
 });
