@@ -588,35 +588,35 @@ GOOD LUCK �
 
 // console.log(createUserName('nischal puri thapa'));
 
-const account1 = {
-  owner: 'Jonas Schmedtmann',
-  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-  interestRate: 1.2, // %
-  pin: 1111,
-};
+// const account1 = {
+//   owner: 'Jonas Schmedtmann',
+//   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+//   interestRate: 1.2, // %
+//   pin: 1111,
+// };
 
-const account2 = {
-  owner: 'Jessica Davis',
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
-  interestRate: 1.5,
-  pin: 2222,
-};
+// const account2 = {
+//   owner: 'Jessica Davis',
+//   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+//   interestRate: 1.5,
+//   pin: 2222,
+// };
 
-const account3 = {
-  owner: 'Steven Thomas Williams',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460],
-  interestRate: 0.7,
-  pin: 3333,
-};
+// const account3 = {
+//   owner: 'Steven Thomas Williams',
+//   movements: [200, -200, 340, -300, -20, 50, 400, -460],
+//   interestRate: 0.7,
+//   pin: 3333,
+// };
 
-const account4 = {
-  owner: 'Sarah Smith',
-  movements: [430, 1000, 700, 50, 90],
-  interestRate: 1,
-  pin: 4444,
-};
+// const account4 = {
+//   owner: 'Sarah Smith',
+//   movements: [430, 1000, 700, 50, 90],
+//   interestRate: 1,
+//   pin: 4444,
+// };
 
-const accounts = [account1, account2, account3, account4];
+// const accounts = [account1, account2, account3, account4];
 
 // function createUserName(name) {
 //   const userName = name
@@ -705,11 +705,11 @@ const accounts = [account1, account2, account3, account4];
 /* FLATMAP AND REDUCT */
 
 // getting all the positive transactions value and summing up to variable, bankDepositeSum
-const bankDepositeSum = accounts
-  .flatMap(account => account.movements)
-  .filter(mov => mov > 0)
-  .reduce((sum, mov) => sum + mov, 0);
-console.log(bankDepositeSum);
+// const bankDepositeSum = accounts
+//   .flatMap(account => account.movements)
+//   .filter(mov => mov > 0)
+//   .reduce((sum, mov) => sum + mov, 0);
+// console.log(bankDepositeSum);
 
 // getting all the positive transaction which is greater and equal to 1000;
 
@@ -719,33 +719,84 @@ console.log(bankDepositeSum);
 //   .reduce((count, mov) => ++count, 0);
 
 // without using filter to count the item array
-const bankDeposite1000 = accounts
-  .flatMap(account => account.movements)
-  .reduce((count, mov) => (mov >= 1000 ? ++count : count), 0);
-console.log(bankDeposite1000);
+// const bankDeposite1000 = accounts
+//   .flatMap(account => account.movements)
+//   .reduce((count, mov) => (mov >= 1000 ? ++count : count), 0);
+// console.log(bankDeposite1000);
 
-const transactions = accounts
-  .flatMap(account => account.movements)
-  .reduce(
-    (transaction, curr) => {
-      transaction[curr > 0 ? 'deposite' : 'withdrawals'] += curr;
-      return transaction;
-    },
-    { deposite: 0, withdrawals: 0 }
-  );
+// const transactions = accounts
+//   .flatMap(account => account.movements)
+//   .reduce(
+//     (transaction, curr) => {
+//       transaction[curr > 0 ? 'deposite' : 'withdrawals'] += curr;
+//       return transaction;
+//     },
+//     { deposite: 0, withdrawals: 0 }
+//   );
 
-console.log(transactions);
+// console.log(transactions);
 
 // convert to title case
 
-const talking = 'this is a nice talking the talking.';
-const exceptions = ['a', 'an', 'the'];
-const titleTalking = talking.split(' ').reduce((sum, curr) => {
-  sum +=
-    (exceptions.includes(curr) ? curr : curr[0].toUpperCase() + curr.slice(1)) +
-    ' ';
-  // sum ? (sum += sum[0].toUpperCase() + sum.slice(1)) : sum;
-  return sum;
-}, '');
+// const talking = 'this is a nice talking the talking.';
+// const exceptions = ['a', 'an', 'the'];
+// const titleTalking = talking.split(' ').reduce((sum, curr) => {
+//   sum +=
+//     (exceptions.includes(curr) ? curr : curr[0].toUpperCase() + curr.slice(1)) +
+//     ' ';
+//   // sum ? (sum += sum[0].toUpperCase() + sum.slice(1)) : sum;
+//   return sum;
+// }, '');
 
-console.log(titleTalking);
+// console.log(titleTalking);
+
+/* ======================= NUMBER, DATE, AND TIMES ================ */
+
+// console.log(0.1 + 0.2);
+// console.log(+'20' === 20);
+
+// console.log(isNaN('30303'));
+
+// console.log(Math.sqrt(25)); // return 5 as 5 is the square root of 25 // equal to 5 ** (1/2)
+// console.log(Math.max(12, 123, 122, 1, 98)); // returns max number 123
+// console.log(Math.min(12, 123, 122, 1, 98)); // returns min number 1
+// console.log(Math.PI); // return PI constant value
+// console.log(Math.trunc(Math.random() * 6) + 1); // return random from 0 inclusive to 6 exclusive ; however if you + 1 then it will return random number from 0 to 6
+
+// const randomInt = (min, max) =>
+//   Math.trunc(Math.random() * (max - min) + 1) + min; // returns the randomInt between min and max // 0...1 -> (0...(max-min)) + min ->  min...(max-min+min) -> min...max
+
+// console.log(randomInt(15, 20));
+
+// console.log('rounding=============');
+
+// console.log(Math.trunc(23.9)); // returns 23 by removing/truncating decimal parts
+// console.log(Math.round(23.9)); // returns 24 by rounding it to nearest integer
+// console.log(Math.round(23.9));
+// console.log(Math.ceil(23.1)); // return 24 by taking the integer to its highest form
+// console.log(Math.floor(23.1)); // returns 23 by taking integer to its lowest form
+
+// console.log((2.333).toFixed());
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+
+// [1, 1, 1, 1, 1, 1, 1].forEach((_, i) =>
+//   setTimeout(() => console.log(new Date()), i * 1000)
+// );
+
+console.log(new Date()); // gives the current date
+console.log(new Date('2011 19 dec')); // if string qoute is used then only date is accepted, not time; and the order doesn't matter unless it is readable by human
+console.log(new Date(2011, 10, 19, 12, 12, 12)); // return date with given order of yyyy/MM/dd/hh/mm/ss
+console.log(new Date(0)); // returns the epoch date from which all time is established in computer and that is Thu Jan 01 1970 05:30:00
+console.log(new Date(3 * 24 * 3600 * 100)); // returns the time of 3 days after the epoch time; however just writting 3 won't give the result, you need to specify the time in milliseconds just like above converting 3 days into millisecond
+const date = new Date();
+console.log(date.getFullYear()); // returns the year of date.
+console.log(date.getMonth()); // returns the month of date .
+console.log(date.getDay()); // returns the day of date.
+console.log(date.getHours()); // returns the hour of date.
+console.log(date.getSeconds()); // returns the second of date.
+console.log(date.toISOString()); // returns the date in International Standard
+// console.log(date.getTime()); // returns the date in milliseconds
+// console.log(Date.now()); // returns the date in milliseconds
+console.log(date.setFullYear(2012)); // set the year but returns in milleseconds; similarly there are month, day, hours, minute, and second to set
+console.log(new Date(date.setFullYear(2099))); // date can also be created using millseconds || timestamp
