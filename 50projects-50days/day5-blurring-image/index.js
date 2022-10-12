@@ -9,6 +9,7 @@ console.log(loadTxtEl);
 function scale(number, inMin, inMax, outMin, outMax) {
   return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
 }
+
 const blurringOut = () => {
   load++;
   if (load > 99) clearInterval(interval);

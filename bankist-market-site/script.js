@@ -188,13 +188,13 @@ tabs.addEventListener('click', e => {
   // e.preventDefault();
   // select the closest button tab from event triggered
   const clickedButton = e.target.closest('.operations__tab');
-  console.log(clickedButton);
+  // console.log(clickedButton);
   // if the clicked event is no button then return//do nothing
   if (!clickedButton) return;
   // if its button then inactive all other tab and active the triggered button
   // remove active tab buttons
   tabButtons.forEach(e => e.classList.remove('operations__tab--active'));
-  console.log(clickedButton.dataset.tab);
+  // console.log(clickedButton.dataset.tab);
   // get the exact button using dataset.tab to get tab no. attribute
   clickedButton.classList.add('operations__tab--active');
   // remove the active operations__content and add clicked button's operations__content
@@ -203,4 +203,37 @@ tabs.addEventListener('click', e => {
   document
     .querySelector(`.operations__content--${clickedButton.dataset.tab}`)
     .classList.add('operations__content--active');
+});
+
+//////// PASSING ARGUMENT IN EVENT HANDLER /////////////////
+function hoverHandler(e) {
+  if (event.target.classList.contains('nav__link')) {
+    const moused = event.target;
+
+    // get the parent/nav and then its children/nav_link
+    const siblings = event.target
+      .closest('.nav')
+      .querySelectorAll('.nav__link');
+    const logoEl = event.target.closest('nav').querySelector('img');
+    console.log(logoEl);
+    siblings.forEach(el => {
+      if (el != moused) el.style.opacity = this;
+    });
+
+    logoEl.style.opacity = this;
+  }
+}
+const navEl = document.querySelector('.nav');
+
+navEl.addEventListener('mouseover', hoverHandler.bind(0.5));
+navEl.addEventListener('mouseout', hoverHandler.bind(1));
+
+//////////// STICKEY SCROLLING //////////////
+const section1El = document
+  .getElementById('section--1')
+  .getBoundingClientRect();
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > section1El.top) navEl.classList.add('sticky');
+  else navEl.classList.remove('sticky');
 });
